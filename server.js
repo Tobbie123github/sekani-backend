@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true}));
 
 app.use(
   cors({
-    origin: "https://sekani-frontend.vercel.app/",
-    credentials: true, // allow frontend to send cookies
+    origin: "*",
+    credentials: true, 
   })
 );
 
