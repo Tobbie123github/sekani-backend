@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
 
 // VERIFY-TOKEN
 
-router.post('/verify-token', async (req, res) => {
+router.get('/verify-token', async (req, res) => {
   
   const authHeader = req.header('Authorization');
 
