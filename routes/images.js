@@ -56,15 +56,24 @@ router.post('/upload', authMiddleware, uploadMultiple, async (req, res) => {
 
 
 // GET ALL (Public, no filters)
+const optimizeCloudinaryUrl = (url) => {
+  return url.replace("/upload/", "/upload/q_10,f_auto,w_1200/");
+};
+
 router.get('/all', async (req, res) => {
   try {
     const images = await Image.find().sort({ date: -1 });
-    res.json(images);
+    const optimized = images.map(img => ({
+      ...img._doc,
+      images: img.images.map(optimizeCloudinaryUrl)
+    }));
+    res.json(optimized);
   } catch (err) {
     console.error('Error fetching images:', err.message);
     res.status(500).send('Server Error');
   }
 });
+
 
 
 
