@@ -82,25 +82,25 @@ router.get('/all', async (req, res) => {
 
 // GET admin IMAGES
 
-router.get('/', authMiddleware, async (req, res) => {
-  try {
-    const { category } = req.query;
+// router.get('/', authMiddleware, async (req, res) => {
+//   try {
+//     const { category } = req.query;
 
-    let query = {};
-    if (category) query.category = category;
+//     let query = {};
+//     if (category) query.category = category;
 
-    if (req.user.role !== 'admin') {
-      query.user = req.user.id; // regular user sees only their images
-    }
+//     if (req.user.role !== 'admin') {
+//       query.user = req.user.id; // regular user sees only their images
+//     }
 
-    const images = await Image.find(query).sort({ date: -1 });
+//     const images = await Image.find(query).sort({ date: -1 });
 
-    res.json(images);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
-  }
-});
+//     res.json(images);
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status(500).send('Server Error');
+//   }
+// });
 
 
 router.get('/:id', authMiddleware, async (req, res) => {
