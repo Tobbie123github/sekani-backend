@@ -57,7 +57,7 @@ router.post('/upload', authMiddleware, uploadMultiple, async (req, res) => {
 
 // GET ALL (Public, no filters)
 const optimizeCloudinaryUrl = (url) => {
-  return url.replace("/upload/", "/upload/q_10,f_auto,w_1200/");
+  return url.replace("/upload/", "/upload/q_60,f_auto,w_1200/");
 };
 
 router.get('/all', async (req, res) => {
