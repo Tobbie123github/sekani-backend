@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true}));
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://sekani-visuals.vercel.app",
     credentials: true, 
   })
 );
